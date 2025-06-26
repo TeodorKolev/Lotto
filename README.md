@@ -1,36 +1,110 @@
-### Functionality Overview (from Lottery-checkpoint.ipynb)
+# Lottery Draw Analysis and Prediction System
 
-This notebook automates the process of downloading, preparing, analyzing, and predicting lottery draw data:
+A sophisticated Python-based system for analyzing lottery draw patterns and predicting potential future outcomes using machine learning techniques.
 
-- **Web Scraping & Data Preparation**: Downloads lottery draw data as a ZIP file, extracts it, and loads CSV files starting with "lotto_". It processes columns like 'boule_1' to 'boule_5', 'numero_chance', and the draw date.
-- **Data Analysis**:
-  - Generates heatmaps showing the frequency of drawn numbers over customizable ranges.
-  - Categorizes numbers into color-coded ranges (e.g., 1-10: green, 11-20: yellow, etc.) and analyzes the occurrence of these patterns.
-  - Counts and visualizes unique draw patterns and their frequencies.
-- **Visualization**:
-  - Provides color-coded pattern visualizations for recent draws.
-  - Displays a legend for color categories.
-- **AI/ML Prediction**:
-  - Encodes draw patterns numerically and uses a Decision Tree Classifier to predict the pattern of the next draw.
-  - Loads a pre-trained model (`pattern-oracle.joblib`), evaluates its accuracy, and visualizes the predicted pattern for the next draw.
+## Overview
 
----
+This project provides a comprehensive suite of tools for analyzing historical lottery draw data, identifying patterns, and making predictions using machine learning. It combines data processing, statistical analysis, and visualization techniques to provide insights into lottery number distributions and patterns.
 
-### TODO Analysis:
-* Odd / Even - (3 odd + 2 even - 814 times)
-* Define patterns: (1-9 - blue, 10-19 - yellow, etc) occurencies (by year) count and PROBABILITY https://lottometrix.com/members/analysis-euromillions.php
-* Top Hot - most occurencies in row range
-* Top Cold - less occurencies on row range
-* Overdue - Number which isn't drawn for a long time (show be beyond range)
-* Pairs and frequency (2,14 - 5 times)
-* Sum and frequency (sum of all numbers: 132 - 56 times)
-* Low / High - split on 24(or 25) occurencies - (3 low, 2 high - 529 times)
-* Consecutives (0 - 1144 times, 1 - 311 times)
-* Regularity (each number is + 7) or (+7 +8 + 9 etc)
-* Following numbers
-* Non following numbers
-* Average numbers
-* Heat map chart
+## Features
 
-### TODO AI:
-* Split analysis on two groups: probability and history. Set each of them value. History value should be lesser than prob one
+### Data Collection and Processing
+- Automated web scraping of lottery draw data
+- ZIP file download and extraction
+- CSV processing with focus on draw numbers and dates
+- Efficient data preparation and cleaning
+
+### Pattern Analysis
+- **Color-Coded Range Analysis**
+  - Green (1-10): Low numbers
+  - Yellow (11-20): Low-mid numbers
+  - Red (21-30): Mid numbers
+  - Purple (31-40): Mid-high numbers
+  - Blue (41-49): High numbers
+
+### Visualization Tools
+- Interactive heatmaps showing number frequency
+- Pattern visualization with color-coded rectangles
+- Customizable time range analysis
+- Historical pattern display
+
+### Machine Learning Predictions
+- Pattern-based prediction using Decision Tree Classifier
+- Model persistence with joblib
+- Accuracy evaluation and reporting
+- Next draw pattern prediction
+
+## Technical Implementation
+
+### Core Components
+- **Data Processing**: Pandas for data manipulation
+- **Visualization**: Matplotlib and Seaborn for data visualization
+- **Machine Learning**: Scikit-learn for pattern prediction
+- **Web Scraping**: Requests library for data collection
+
+### Key Classes
+- `PatternPlotter`: Handles visualization of number patterns
+- `PatternAnalyzer`: Manages pattern detection and analysis
+
+## Development Roadmap
+
+### Statistical Analysis Implementation
+- **Distribution Analysis**
+  - Odd/Even number distribution (Current record: 3 odd + 2 even appears 814 times)
+  - Low/High number split analysis (3 low, 2 high appears 529 times)
+  - Consecutive number patterns (0 consecutive: 1144 times, 1 consecutive: 311 times)
+
+- **Pattern Recognition**
+  - Number range occurrence tracking by year
+  - Probability calculation system (Reference: lottometrix.com methodology)
+  - Pattern frequency analysis with historical context
+
+- **Frequency Analysis**
+  - Hot numbers (highest occurrence in selected range)
+  - Cold numbers (lowest occurrence in selected range)
+  - Overdue numbers (numbers not drawn for extended periods)
+  - Number pair frequency tracking (e.g., "2,14" appears 5 times)
+
+- **Advanced Metrics**
+  - Sum frequency analysis (e.g., total sum 132 appears 56 times)
+  - Number sequence regularity detection (fixed increments: +7, +8, etc.)
+  - Following/Non-following number patterns
+  - Average number distribution analysis
+  - Enhanced heat map visualization
+
+### AI/ML Enhancement Plan
+- **Dual Analysis System**
+  - Probability-based analysis component
+  - Historical pattern analysis component
+  - Weighted scoring system (history weight < probability weight)
+
+## Requirements
+
+- Python 3.x
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- requests
+
+## Getting Started
+
+1. Clone the repository
+2. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+4. Open `Lottery.ipynb` to start analysis
+
+## Note
+
+This project is for educational and research purposes only. It demonstrates statistical analysis and machine learning techniques but does not guarantee any lottery outcomes. Please use responsibly and be aware of your local gambling laws and regulations.
+
+## License
+
+MIT License - See LICENSE file for details
