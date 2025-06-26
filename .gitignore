@@ -1,1 +1,16 @@
-loto_201911.csv
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+/venv/
+
+# Model files
+pattern-oracle.joblib
+
+# Data files (if you download/generate them)
+loto_*.csv
+euromillions_*.csv
